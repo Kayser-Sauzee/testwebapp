@@ -1,34 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  overflow-x: hidden; /* 🔥 empêche scroll horizontal */
 }
 
+/* Layout principal */
 .layout {
   display: flex;
   height: 100vh;
+  width: 100vw;
 }
 
 /* Sidebar */
 .sidebar {
   width: 300px;
+  max-width: 100%;
   background: #f7f7f7;
   padding: 15px;
   overflow-y: auto;
 }
 
-.sidebar h2 {
-  margin-top: 0;
-}
-
+/* Boutons filtres */
 .filters button {
   display: block;
-  width: 100%;
+  width: 100%;        /* 🔥 important */
+  max-width: 100%;
   margin-bottom: 8px;
   padding: 10px;
   border: none;
   background: #fff;
   cursor: pointer;
   border-radius: 6px;
+  white-space: normal; /* 🔥 empêche texte de déborder */
 }
 
 /* Liste */
@@ -41,26 +48,31 @@ body {
   background: white;
   margin-bottom: 10px;
   border-radius: 6px;
-  cursor: pointer;
+
+  /* 🔥 empêche dépassement texte */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Carte */
 #map {
   flex: 1;
+  width: 100%;
 }
 
-/* Responsive */
+/* 🧠 MOBILE */
 @media (max-width: 768px) {
+
   .layout {
     flex-direction: column;
   }
 
   .sidebar {
     width: 100%;
-    height: 40%;
+    height: 40vh; /* mieux que % */
   }
 
   #map {
-    height: 60%;
+    height: 60vh;
   }
 }
